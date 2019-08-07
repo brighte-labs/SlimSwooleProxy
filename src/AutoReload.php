@@ -10,9 +10,6 @@ use function scandir;
 use function strrchr;
 use function trim;
 
-/**
- * @codeCoverageIgnore
- */
 class AutoReload
 {
 

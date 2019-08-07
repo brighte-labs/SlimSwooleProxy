@@ -9,9 +9,6 @@ use Slim\Http\Request;
 use Slim\Http\UploadedFile;
 use Swoole\Http\Request as SwooleRequest;
 
-/**
- * @codeCoverageIgnore
- */
 class RequestTransformer implements \SwooleProxy\Bridge\IRequestTransformer
 {
 

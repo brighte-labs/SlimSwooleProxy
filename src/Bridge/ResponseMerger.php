@@ -8,9 +8,6 @@ use Psr\Http\Message\ResponseInterface;
 use Slim\App;
 use Swoole\Http\Response;
 
-/**
- * @codeCoverageIgnore
- */
 class ResponseMerger implements \SwooleProxy\Bridge\IResponseMerger
 {
 

@@ -71,7 +71,6 @@ class SwooleProxy implements \SwooleProxy\ISwooleProxy
     /**
      * Processing request by swoole
      *
-     * @codeCoverageIgnore
      * @param \Swoole\Http\Request $swooleRequest Http request via swoole
      * @param \Swoole\Http\Response $swooleResponse Http response via swoole
      * @return \Swoole\Http\Response Http response after process via Slim framework
@@ -140,9 +139,6 @@ class SwooleProxy implements \SwooleProxy\ISwooleProxy
         $this->enableHotReload = $enable;
     }
 
-    /**
-     * @codeCoverageIgnore
-     */
     public function run(): void
     {
         // Witch the PHP build-in stream, sleep, pdo, mysqli, redis
