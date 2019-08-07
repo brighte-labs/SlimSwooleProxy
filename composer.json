@@ -4,7 +4,7 @@
     "keywords": ["slim", "swoole"],
     "homepage": "https://github.com/brighte-capital/SlimSwooleProxy",
     "license": "MIT",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "authors": [
         {
             "name": "Jingtai Piao",
