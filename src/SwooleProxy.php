@@ -16,44 +16,42 @@ use SwooleProxy\Bridge\RequestTransformerInterface;
 use SwooleProxy\Bridge\ResponseMerger;
 use SwooleProxy\Bridge\ResponseMergerInterface;
 
-class SwooleProxy implements ISwooleProxy
+class SwooleProxy implements \SwooleProxy\ISwooleProxy
 {
 
-    /**
-     * @var \Slim\App
-     */
+    /** @var \Slim\App */
     private $app;
 
-    /**
-     * @var \SwooleProxy\Bridge\RequestTransformerInterface
-     */
+    /** @var \SwooleProxy\Bridge\RequestTransformerInterface */
     private $requestTransformer;
 
-    /**
-     * @var \SwooleBridge\Bridge\ResponseMergerInterface
-     */
+    /** @var \SwooleBridge\Bridge\ResponseMergerInterface */
     private $responseMerger;
 
     /**
      * Require files
+     *
      * @var string[]
      */
     private $requiredFiles = [];
 
     /**
      * inotify watched files
+     *
      * @var string
      */
     private $sourceDir = '';
 
     /**
      * enable hot reload
-     * @var boolean
+     *
+     * @var bool
      */
     private $enableHotReload = false;
 
     /**
      * Listener in the separate process
+     *
      * @var null
      */
     private $listener = null;
@@ -105,14 +103,16 @@ class SwooleProxy implements ISwooleProxy
     /**
      * Add required files to watch
      *
-     * @param string[] $fileName The file path needs to be required
+     * @param string[] $fileNames The file path needs to be required
      * @return  void
      */
     public function setRequiredFiles(array $fileNames = []): void
     {
-        if (count($fileNames) > 0) {
-            $this->requiredFiles = array_merge($this->requiredFiles, $fileNames);
+        if (count($fileNames) <= 0) {
+            return;
         }
+
+        $this->requiredFiles = array_merge($this->requiredFiles, $fileNames);
     }
 
     /**
@@ -123,14 +123,11 @@ class SwooleProxy implements ISwooleProxy
      */
     public function setSourceDir(string $sourceDir = ''): void
     {
-        if (strlen($sourceDir) > 0) {
-            $this->sourceDir = $sourceDir;
+        if (strlen($sourceDir) <= 0) {
+            return;
         }
-    }
 
-    public function setListener($listener = null): void
-    {
-        $this->listener = $listener;
+        $this->sourceDir = $sourceDir;
     }
 
     /**
@@ -138,7 +135,7 @@ class SwooleProxy implements ISwooleProxy
      *
      * @param bool $enable [description]
      */
-    public function setEnableHotReload(bool $enable = true)
+    public function setEnableHotReload(bool $enable = true): void
     {
         $this->enableHotReload = $enable;
     }
@@ -187,10 +184,12 @@ class SwooleProxy implements ISwooleProxy
             // phpcs:ignore
             $app = $this->app;
 
-            if (count($this->requiredFiles) > 0) {
-                foreach ($this->requiredFiles as $file) {
-                    require_once($file);
-                }
+            if (count($this->requiredFiles) <= 0) {
+                return;
+            }
+
+            foreach ($this->requiredFiles as $file) {
+                require_once $file;
             }
         });
 
@@ -204,7 +203,7 @@ class SwooleProxy implements ISwooleProxy
                 }
 
                 $this->processing($swooleRequest, $swooleResponse)->end();
-            }
+            },
         );
 
         $http->start();

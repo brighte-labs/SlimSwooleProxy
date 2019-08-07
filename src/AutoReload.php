@@ -16,9 +16,7 @@ use function trim;
 class AutoReload
 {
 
-    /**
-     * @var resource
-     */
+    /** @var resource */
     protected $inotify;
 
     /**

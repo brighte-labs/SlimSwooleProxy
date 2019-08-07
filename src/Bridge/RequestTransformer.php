@@ -35,7 +35,7 @@ class RequestTransformer implements \SwooleProxy\Bridge\IRequestTransformer
                 'REMOTE_ADDR' => $request->server['remote_addr'],
                 'REQUEST_TIME' => $request->server['request_time'],
                 'REQUEST_TIME_FLOAT' => $request->server['request_time_float'],
-            ])
+            ]),
         );
 
         $slimRequest = $this->copyHeaders($request, $slimRequest);
@@ -107,7 +107,7 @@ class RequestTransformer implements \SwooleProxy\Bridge\IRequestTransformer
                 $file['name'],
                 $file['type'],
                 $file['size'],
-                $file['error']
+                $file['error'],
             );
         }
 
