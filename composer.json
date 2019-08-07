@@ -11,6 +11,7 @@
             "email": "jingtai.piao@brighte.com.au"
         }
     ],
+    "minimum-stability": "stable",
     "require": {
     },
     "require-dev": {
