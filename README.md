@@ -2,3 +2,4 @@
     * Implement autowatch with inotify
     * Implement proxy pattern to replace Slim/App
     * Implement class alias
+    * Support register separate process
