@@ -4,8 +4,7 @@ declare(strict_types = 1);
 
 namespace SwooleProxy;
 
-use App\Base\App;
-use App\Services\Sqs\SqsListenerCoroutine;
+use Slim\App;
 use Slim\Http\Response;
 use Swoole\Http\Request;
 use Swoole\Http\Response as SwooleResponse;
@@ -21,7 +20,7 @@ class SwooleProxy implements ISwooleProxy
 {
 
     /**
-     * @var \App\Base\App
+     * @var \Slim\App
      */
     private $app;
 
@@ -52,6 +51,12 @@ class SwooleProxy implements ISwooleProxy
      * @var boolean
      */
     private $enableHotReload = false;
+
+    /**
+     * Listener in the separate process
+     * @var null
+     */
+    private $listener = null;
 
     public function __construct(
         App $app,
@@ -123,6 +128,11 @@ class SwooleProxy implements ISwooleProxy
         }
     }
 
+    public function setListener($listener = null): void
+    {
+        $this->listener = $listener;
+    }
+
     /**
      * Setter for enableHotrealod
      *
@@ -146,12 +156,13 @@ class SwooleProxy implements ISwooleProxy
         // Start the Swoole server
         $http = new Server('0.0.0.0', 80);
 
-        $process = new Process(function ($process): void {
-            $listener = new SqsListenerCoroutine($this->app);
-            $listener->listening();
-        }, false, 0);
+        if ($this->listener !== null) {
+            $process = new Process(function ($process): void {
+                $this->listener->listening();
+            }, false, 0);
 
-        $http->addProcess($process);
+            $http->addProcess($process);
+        }
 
         $http->set([
             'dispatch_mode' => 3,
