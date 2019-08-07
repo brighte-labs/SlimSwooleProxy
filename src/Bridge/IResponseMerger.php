@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace SwooleBridge\Bridge;
+namespace SwooleProxy\Bridge;
 
 use Psr\Http\Message\ResponseInterface;
 use Swoole\Http\Response;

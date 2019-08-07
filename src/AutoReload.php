@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace SwooleBridge;
+namespace SwooleProxy;
 
 use function date;
 use function posix_kill;

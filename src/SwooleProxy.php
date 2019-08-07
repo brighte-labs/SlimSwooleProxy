@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace SwooleBridge;
+namespace SwooleProxy;
 
 use App\Base\App;
 use App\Services\Sqs\SqsListenerCoroutine;
@@ -12,12 +12,12 @@ use Swoole\Http\Response as SwooleResponse;
 use Swoole\Http\Server;
 use Swoole\Process;
 use Swoole\Runtime;
-use SwooleBridge\Bridge\RequestTransformer;
-use SwooleBridge\Bridge\RequestTransformerInterface;
-use SwooleBridge\Bridge\ResponseMerger;
-use SwooleBridge\Bridge\ResponseMergerInterface;
+use SwooleProxy\Bridge\RequestTransformer;
+use SwooleProxy\Bridge\RequestTransformerInterface;
+use SwooleProxy\Bridge\ResponseMerger;
+use SwooleProxy\Bridge\ResponseMergerInterface;
 
-class SwooleProxy implements \SwooleBridge\ISwooleProxy
+class SwooleProxy implements ISwooleProxy
 {
 
     /**
@@ -26,7 +26,7 @@ class SwooleProxy implements \SwooleBridge\ISwooleProxy
     private $app;
 
     /**
-     * @var \SwooleBridge\Bridge\RequestTransformerInterface
+     * @var \SwooleProxy\Bridge\RequestTransformerInterface
      */
     private $requestTransformer;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace SwooleBridge\Bridge;
+namespace SwooleProxy\Bridge;
 
 use Slim\Http\Request;
 use Swoole\Http\Request as SwooleRequest;

@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace SwooleBridge;
+namespace SwooleProxy;
 
 use Swoole\Http\Request;
 use Swoole\Http\Response;

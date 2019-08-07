@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace SwooleBridge\Bridge;
+namespace SwooleProxy\Bridge;
 
 use Slim\Http\Environment;
 use Slim\Http\Request;
@@ -12,7 +12,7 @@ use Swoole\Http\Request as SwooleRequest;
 /**
  * @codeCoverageIgnore
  */
-class RequestTransformer implements \SwooleBridge\Bridge\IRequestTransformer
+class RequestTransformer implements \SwooleProxy\Bridge\IRequestTransformer
 {
 
     private const DEFAULT_SCHEMA = 'http';

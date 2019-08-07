@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace SwooleBridge\Bridge;
+namespace SwooleProxy\Bridge;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\App;
@@ -11,7 +11,7 @@ use Swoole\Http\Response;
 /**
  * @codeCoverageIgnore
  */
-class ResponseMerger implements \SwooleBridge\Bridge\IResponseMerger
+class ResponseMerger implements \SwooleProxy\Bridge\IResponseMerger
 {
 
     /**
