@@ -1,0 +1,22 @@
+{
+    "name": "jp928/slim-swoole-proxy",
+    "description": "Slim-PHP bridge to Swoole",
+    "keywords": ["slim", "swoole"],
+    "homepage": "https://github.com/brighte-capital/SlimSwooleProxy",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jingtai Piao",
+            "email": "jingtai.piao@brighte.com.au"
+        }
+    ],
+    "require": {
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "SwooleProxy\\": "SwooleProxy"
+        }
+    }
+}
