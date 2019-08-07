@@ -10,7 +10,7 @@ use Slim\Http\Response;
 use SwooleBridge\Bridge\RequestTransformer;
 use SwooleBridge\SwooleProxy;
 
-abstract class BaseSwooleTestCase extends \Tests\BaseFunctionalTestCase
+abstract class BaseSwooleTestCase extends \PHPUnit\Framework\TestCase
 {
 
     /**
