@@ -47,6 +47,12 @@ class SwooleProxy implements \SwooleBridge\ISwooleProxy
      */
     private $sourceDir = '';
 
+    /**
+     * enable hot reload
+     * @var boolean
+     */
+    private $enableHotReload = false;
+
     public function __construct(
         App $app,
         ?RequestTransformerInterface $requestTransformer = null,
@@ -118,6 +124,16 @@ class SwooleProxy implements \SwooleBridge\ISwooleProxy
     }
 
     /**
+     * Setter for enableHotrealod
+     *
+     * @param bool $enable [description]
+     */
+    public function setEnableHotReload(bool $enable = true)
+    {
+        $this->enableHotReload = $enable;
+    }
+
+    /**
      * @codeCoverageIgnore
      */
     public function run(): void
@@ -146,7 +162,7 @@ class SwooleProxy implements \SwooleBridge\ISwooleProxy
             echo sprintf('Swoole http server is started at http://%s:%s', $server->host, $server->port), PHP_EOL;
 
             // watch php file update for development
-            if (env('APP_ENV') !== 'local') {
+            if ($this->enableHotReload === false) {
                 return;
             }
 
