@@ -8,15 +8,10 @@ use Psr\Http\Message\ResponseInterface;
 use Slim\App;
 use Swoole\Http\Response;
 
-/**
- * @codeCoverageIgnore
- */
 class ResponseMerger implements \SwooleProxy\Bridge\IResponseMerger
 {
 
-    /**
-     * @var \Slim\App
-     */
+    /** @var \Slim\App */
     private $app;
 
     public function __construct(App $app)
@@ -24,11 +19,6 @@ class ResponseMerger implements \SwooleProxy\Bridge\IResponseMerger
         $this->app = $app;
     }
 
-    /**
-     * @param \Psr\Http\Message\ResponseInterface; $response
-     * @param \Swoole\Http\Response $swooleResponse
-     * @return \Swoole\Http\Response
-     */
     public function mergeToSwoole(
         ResponseInterface $response,
         Response $swooleResponse

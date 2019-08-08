@@ -27,5 +27,11 @@
         "psr-4": {
             "SwooleProxy\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SwooleProxy\\": "src/",
+            "Tests\\": "tests/"
+        }
     }
 }

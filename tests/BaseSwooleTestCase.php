@@ -7,11 +7,13 @@ namespace Tests;
 use Slim\Http\Environment;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use SwooleBridge\Bridge\RequestTransformer;
-use SwooleBridge\SwooleProxy;
+use SwooleProxy\Bridge\RequestTransformer;
+use SwooleProxy\SwooleProxy;
 
-abstract class BaseSwooleTestCase extends \Tests\BaseFunctionalTestCase
+abstract class BaseSwooleTestCase extends \PHPUnit\Framework\TestCase
 {
+
+    protected $app;
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -20,6 +22,7 @@ abstract class BaseSwooleTestCase extends \Tests\BaseFunctionalTestCase
     protected function setUp(): void
     {
         parent::setUp();
+			$this->createApplication();
         $this->requestTransformer = new RequestTransformer;
     }
 
@@ -36,7 +39,8 @@ abstract class BaseSwooleTestCase extends \Tests\BaseFunctionalTestCase
 
     protected function createApplication(): void
     {
-        parent::createApplication();
+        $this->app = require __DIR__ . '/../src/bootstrap.php';
+
         $this->app = new SwooleProxy($this->app);
     }
 

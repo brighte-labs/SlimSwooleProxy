@@ -10,15 +10,10 @@ use function scandir;
 use function strrchr;
 use function trim;
 
-/**
- * @codeCoverageIgnore
- */
 class AutoReload
 {
 
-    /**
-     * @var resource
-     */
+    /** @var resource */
     protected $inotify;
 
     /**
